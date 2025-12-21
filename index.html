@@ -21,7 +21,31 @@
       <li>Ear Cleaning</li>
     </ul>
   </section>
+<section>
+  <h2>Book an Appointment 🐾</h2>
 
+  <form action="https://formspree.io/f/meejzalr" method="POST">
+    
+    <input type="text" name="owner" placeholder="Your Name" required>
+
+    <input type="email" name="email" placeholder="Email Address" required>
+
+    <input type="text" name="dog" placeholder="Dog Name & Breed" required>
+
+    <select name="service" required>
+      <option value="">Select Service</option>
+      <option>Bath & Dry</option>
+      <option>Haircut & Styling</option>
+      <option>Full Grooming</option>
+    </select>
+
+    <input type="date" name="date" required>
+
+    <textarea name="message" placeholder="Additional notes"></textarea>
+
+    <button type="submit">Book Now</button>
+  </form>
+</section>
   <footer>
     <p>© 2025 GroomingPG</p>
   </footer>
