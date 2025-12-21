@@ -18,3 +18,9 @@ footer {
   background: #ffcc70;
   padding: 10px;
 }
+label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+}
