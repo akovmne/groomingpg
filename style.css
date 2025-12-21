@@ -81,5 +81,10 @@ button,
   max-width: 320px;
   margin: 10px auto;
   display: block;
+} input,
+select,
+textarea {
+  font-size: 16px;
 }
+
 
