@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.jpg') center/cover no-repeat;
   color: white;
   padding: 100px 20px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
@@ -162,38 +162,28 @@ footer {
   header h1 { font-size: 36px; }
   header p { font-size: 18px; }
 }
+
 .logo-container {
-  padding: 30px 0 10px;  /* Reduced top padding for better balance */
+  padding: 30px 0 20px;  /* Slightly more bottom padding for breathing room */
 }
 
 .logo {
-  max-width: 160px;      /* Smaller base size – try this first */
+  max-width: 160px;      /* Smaller, balanced size for desktop */
   height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 50%;    /* Optional: keeps your circular shape crisp */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);  /* Subtle shadow for pop on dark background */
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .logo {
-    max-width: 200px;    /* Even smaller on mobile */
+    max-width: 160px;    /* Comfortable size on tablets/small laptops */
   }
   
   .logo-container {
-    padding: 20px 0 5px;
-  }
-  
-  header p {
-    font-size: 17px;
-    padding: 0 15px;
-  }
-}
-
-/* Make header text a bit smaller on mobile */
-@media (max-width: 768px) {
-  .logo {
-    max-width: 260px;
+    padding: 25px 0 15px;
   }
   
   header p {
@@ -202,8 +192,20 @@ footer {
   }
 }
 
-/* Optional: Slight dark overlay improvement for better logo visibility */
-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.jpg') center/cover no-repeat;
-  /* Increased overlay darkness slightly for better contrast with light logo background */
+@media (max-width: 480px) {
+  .logo {
+    max-width: 140px;    /* Even smaller on phones to avoid dominating the header */
+  }
+  
+  .logo-container {
+    padding: 20px 0 10px;
+  }
+  
+  header h1 {
+    font-size: 32px;
+  }
+  
+  header p {
+    font-size: 17px;
+  }
 }
