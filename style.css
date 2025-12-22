@@ -162,3 +162,31 @@ footer {
   header h1 { font-size: 36px; }
   header p { font-size: 18px; }
 }
+.logo-container {
+  padding: 40px 0 20px;  /* Gives space above/below logo */
+}
+
+.logo {
+  max-width: 320px;      /* Adjust this if your logo looks too big/small */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Make header text a bit smaller on mobile */
+@media (max-width: 768px) {
+  .logo {
+    max-width: 260px;
+  }
+  
+  header p {
+    font-size: 18px;
+    padding: 0 20px;
+  }
+}
+
+/* Optional: Slight dark overlay improvement for better logo visibility */
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.jpg') center/cover no-repeat;
+  /* Increased overlay darkness slightly for better contrast with light logo background */
+}
