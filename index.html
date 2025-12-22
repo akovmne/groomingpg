@@ -3,132 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional dog grooming salon in Podgorica. Bath, haircut, nail trimming, and more.">
   <title>GroomingPG – Professional Dog Grooming</title>
-
-  <!-- SEO -->
-  <meta name="description" content="GroomingPG – Professional dog grooming services. Bath, haircut, styling and full grooming with easy online booking.">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <a href="https://wa.me/38268012911" class="whatsapp-float" target="_blank">💬</a>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/38268012911"
-     class="whatsapp-float"
-     target="_blank"
-     aria-label="Chat on WhatsApp">
-     💬
-  </a>
-
-  <!-- Header / Hero -->
   <header>
     <h1>🐶 GroomingPG</h1>
-    <p>Professional Dog Grooming with Love & Care</p>
-    <nav>
-      <a href="index-sr.html">🇷🇸 Srpski</a>
-    </nav>
+    <p>Professional Dog Grooming in Podgorica</p>
+    <a href="index-sr.html" style="color:white; background:rgba(0,0,0,0.3); padding:10px 20px; border-radius:30px; text-decoration:none;">🇷🇸 Srpski</a>
   </header>
 
-  <main>
-
-    <!-- Services -->
+  <div class="container">
     <section>
-      <h2>Our Services 🛁✂️</h2>
+      <h2>Our Services</h2>
       <ul>
         <li>Bath & Dry</li>
         <li>Haircut & Styling</li>
-        <li>Full Grooming</li>
         <li>Nail Trimming</li>
         <li>Ear Cleaning</li>
+        <li>Full Grooming Package</li>
       </ul>
     </section>
 
-    <!-- Booking Form -->
     <section>
       <h2>Book an Appointment 🐾</h2>
-
       <form action="https://formspree.io/f/meejzalr" method="POST">
+        <label for="owner">Your Name</label>
+        <input type="text" id="owner" name="owner" placeholder="Your Name" required>
 
-        <label>
-          Your Name
-          <input type="text" name="owner" placeholder="Your Name" required>
-        </label>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
 
-        <label>
-          Email Address
-          <input type="email" name="email" placeholder="Email Address" required>
-        </label>
+        <label for="dog">Dog Name & Breed</label>
+        <input type="text" id="dog" name="dog" placeholder="Dog Name & Breed" required>
 
-        <label>
-          Dog Name & Breed
-          <input type="text" name="dog" placeholder="Dog Name & Breed" required>
-        </label>
+        <label for="service">Service</label>
+        <select id="service" name="service" required>
+          <option value="">Select Service</option>
+          <option>Bath & Dry</option>
+          <option>Haircut & Styling</option>
+          <option>Full Grooming</option>
+        </select>
 
-        <label>
-          Select Service
-          <select name="service" required>
-            <option value="">Choose a service</option>
-            <option>Bath & Dry</option>
-            <option>Haircut & Styling</option>
-            <option>Full Grooming</option>
-          </select>
-        </label>
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" name="date" required>
 
-        <label>
-          Preferred Date
-          <input type="date" name="date" required>
-        </label>
-
-        <label>
-          Additional Notes
-          <textarea name="message" placeholder="Anything we should know?"></textarea>
-        </label>
+        <label for="message">Additional Notes</label>
+        <textarea id="message" name="message" placeholder="Additional notes"></textarea>
 
         <button type="submit">Book Now</button>
       </form>
     </section>
 
-    <!-- WhatsApp Booking -->
     <section>
       <h2>Book via WhatsApp 💬</h2>
-      <a class="whatsapp-btn"
-         href="https://wa.me/38268012911?text=Hello%20GroomingPG!%20I%20would%20like%20to%20book%20a%20dog%20grooming%20appointment."
-         target="_blank">
-         📲 Chat on WhatsApp
+      <a class="whatsapp-btn" href="https://wa.me/38268012911?text=Hello%20GroomingPG!%20I%20would%20like%20to%20book%20a%20dog%20grooming%20appointment." target="_blank">
+        📲 Chat on WhatsApp
       </a>
-    </section>
 
-    <!-- Instagram Booking -->
-    <section>
       <h2>Book via Instagram 📸</h2>
-
-      <a class="instagram-btn"
-         href="https://www.instagram.com/groomingpg/"
-         target="_blank">
-         📩 Book via Instagram DM
+      <a class="instagram-btn" href="https://www.instagram.com/groomingpg/" target="_blank">
+        📩 Send DM on Instagram
       </a>
-
-      <p class="small-text">
-        Send us a DM with your dog’s name, breed, and preferred date.
-      </p>
+      <p class="small-text">Send us a DM with your dog's name, breed, and preferred date.</p>
     </section>
 
-    <!-- Gallery -->
     <section>
-      <h2>Happy Clients ❤️</h2>
-      <img src="images/dog1.jpg" alt="Happy dog after grooming">
-      <img src="images/dog2.jpg" alt="Dog grooming result">
-      <img src="images/dog3.jpg" alt="Clean and styled dog">
+      <h2>Our Happy Clients ❤️</h2>
+      <div class="gallery">
+        <img src="images/dog1.jpg" alt="Groomed dog 1">
+        <img src="images/dog2.jpg" alt="Groomed dog 2">
+        <img src="images/dog3.jpg" alt="Groomed dog 3">
+        <!-- Add more images here -->
+      </div>
     </section>
+  </div>
 
-  </main>
-
-  <!-- Footer -->
   <footer>
-    <p>© 2025 GroomingPG • All rights reserved</p>
+    <p>© 2025 GroomingPG – Podgorica, Montenegro</p>
   </footer>
-
 </body>
 </html>
