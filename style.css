@@ -167,7 +167,7 @@ footer {
 }
 
 .logo {
-  max-width: 320px;      /* Adjust this if your logo looks too big/small */
+  max-width: 120px;      /* Adjust this if your logo looks too big/small */
   height: auto;
   display: block;
   margin: 0 auto;
