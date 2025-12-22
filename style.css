@@ -163,14 +163,31 @@ footer {
   header p { font-size: 18px; }
 }
 .logo-container {
-  padding: 40px 0 20px;  /* Gives space above/below logo */
+  padding: 30px 0 10px;  /* Reduced top padding for better balance */
 }
 
 .logo {
-  max-width: 120px;      /* Adjust this if your logo looks too big/small */
+  max-width: 240px;      /* Smaller base size – try this first */
   height: auto;
   display: block;
   margin: 0 auto;
+  border-radius: 50%;    /* Optional: keeps your circular shape crisp */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);  /* Subtle shadow for pop on dark background */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 200px;    /* Even smaller on mobile */
+  }
+  
+  .logo-container {
+    padding: 20px 0 5px;
+  }
+  
+  header p {
+    font-size: 17px;
+    padding: 0 15px;
+  }
 }
 
 /* Make header text a bit smaller on mobile */
