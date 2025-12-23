@@ -3,85 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Profesionalni salon za šišanje i njegu pasa u Podgorici. Kupanje, šišanje, skraćivanje noktiju i još mnogo toga.">
-  <title>GroomingPG – Profesionalno šišanje pasa</title>
+  <meta name="description" content="Hvala vam što ste zakazali termin u GroomingPG!">
+  <title>Hvala vam – GroomingPG</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="https://wa.me/38268012911" class="whatsapp-float" target="_blank">💬</a>
 
   <header>
-  <div class="logo-container">
-    <img src="images/logo.png" alt="GroomingPG Logo - Profesionalno šišanje pasa i usluga preuzimanja u Podgorici" class="logo">
-  </div>
-  <p>Profesionalno šišanje pasa i usluga preuzimanja u Podgorici</p>
-  <a href="index.html" style="color:white; background:rgba(0,0,0,0.3); padding:10px 20px; border-radius:30px; text-decoration:none;">🇬🇧 English</a>
-</header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="GroomingPG Logo - Profesionalno šišanje pasa i usluga preuzimanja u Podgorici" class="logo">
+    </div>
+    <p>Profesionalno šišanje pasa i usluga preuzimanja u Podgorici</p>
+    <a href="thank-you.html" style="color:white; background:rgba(0,0,0,0.3); padding:10px 20px; border-radius:30px; text-decoration:none;">🇬🇧 English</a>
+  </header>
 
   <div class="container">
-    <section>
-      <h2>Naše usluge</h2>
-      <ul>
-        <li>Kupanje i sušenje</li>
-        <li>Šišanje i stilizovanje</li>
-        <li>Skraćivanje noktiju</li>
-        <li>Čišćenje ušiju</li>
-        <li>Kompletan grooming paket</li>
-      </ul>
+    <section style="text-align:center; padding:80px 20px; min-height:60vh;">
+      <h2 style="color:#25D366; font-size:36px;">Hvala vam! 🐾</h2>
+      <p style="font-size:22px; margin:30px 0; max-width:800px; margin-left:auto; margin-right:auto;">
+        Vaš zahtjev za termin je uspješno primljen.
+      </p>
+      <p style="font-size:18px; margin:20px 0; max-width:800px; margin-left:auto; margin-right:auto; line-height:1.6;">
+        Uskoro ćemo potvrditi vaš termin putem emaila ili WhatsApp-a.<br>
+        U međuvremenu, slobodno pregledajte našu galeriju ili nas kontaktirajte direktno ako imate dodatna pitanja.
+      </p>
+      
+      <div style="margin:40px 0;">
+        <a href="index-sr.html" class="whatsapp-btn" style="display:inline-block; margin:10px; padding:15px 30px;">
+          ← Nazad na početnu stranicu
+        </a>
+        <a href="https://wa.me/38268012911" class="whatsapp-btn" style="display:inline-block; margin:10px; padding:15px 30px;">
+          Pišite nam na WhatsApp 💬
+        </a>
+      </div>
     </section>
 
     <section>
-      <h2>Zakažite termin 🐾</h2>
-      <form action="https://formspree.io/f/meejzalr" method="POST">
-        <label for="owner">Vaše ime</label>
-        <input type="text" id="owner" name="owner" placeholder="Vaše ime" required>
-
-        <label for="email">Email adresa</label>
-        <input type="email" id="email" name="email" placeholder="Email adresa" required>
-
-        <label for="dog">Ime i rasa psa</label>
-        <input type="text" id="dog" name="dog" placeholder="Ime i rasa psa" required>
-
-        <label for="service">Usluga</label>
-        <select id="service" name="service" required>
-          <option value="">Izaberite uslugu</option>
-          <option>Kupanje i sušenje</option>
-          <option>Šišanje i stilizovanje</option>
-          <option>Kompletan grooming</option>
-        </select>
-
-        <label for="date">Željeni datum</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="message">Dodatne napomene</label>
-        <textarea id="message" name="message" placeholder="Dodatne napomene"></textarea>
-
-        <button type="submit">Zakaži termin</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Zakažite putem WhatsApp-a 💬</h2>
-      <a class="whatsapp-btn" 
-         href="https://wa.me/38268012911?text=Zdravo%20GroomingPG!%20Želeo/la%20bih%20da%20zakažem%20termin%20za%20grooming%20psa." 
-         target="_blank">
-        📲 Pišite nam na WhatsApp
-      </a>
-
-      <h2>Zakažite putem Instagrama 📸</h2>
-      <a class="instagram-btn" href="https://www.instagram.com/groomingpg/" target="_blank">
-        📩 Pošaljite DM na Instagramu
-      </a>
-      <p class="small-text">Pošaljite poruku sa imenom psa, rasom i željenim datumom.</p>
-    </section>
-
-    <section>
-      <h2>Naši srećni klijenti ❤️(ažurira se)</h2>
+      <h2>Naši srećni klijenti ❤️</h2>
       <div class="gallery">
         <img src="images/dog1.jpg" alt="Negovani pas 1">
         <img src="images/dog2.jpg" alt="Negovani pas 2">
         <img src="images/dog3.jpg" alt="Negovani pas 3">
-        <!-- Dodajte još slika ovde po želji -->
+        <!-- Dodajte još slika po želji -->
       </div>
     </section>
   </div>
