@@ -38,11 +38,11 @@
     <section>
       <h2>Naše usluge</h2>
       <ul>
-        <li onclick="openModal('modal-bath')">Kupanje i sušenje</li>
-        <li onclick="openModal('modal-haircut')">Šišanje i stilizovanje</li>
-        <li onclick="openModal('modal-nail')">Skraćivanje noktiju</li>
-        <li onclick="openModal('modal-ear')">Čišćenje ušiju</li>
-        <li onclick="openModal('modal-full')">Kompletan grooming paket</li>
+        <li>Kupanje i sušenje</li>
+        <li>Šišanje i stilizovanje</li>
+        <li>Skraćivanje noktiju</li>
+        <li>Čišćenje ušiju</li>
+        <li>Kompletan grooming paket</li>
       </ul>
     </section>
 
@@ -112,54 +112,8 @@
     </section>
   </div>
 
-  <!-- Modals for services -->
-  <div id="modal-bath" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-bath')">&times;</span>
-      <h2>Kupanje i sušenje</h2>
-      <p>Nježno kupanje sa premium šamponom praćeno sušenjem fenom za svježu dlaku.</p>
-      <img src="https://www.marriedwithbichons.com/wp-content/uploads/2022/11/20140123_101656_Park-Lake-Cir-scaled.jpg" alt="Bišon frize pas koji se kupa i suši tokom groominga">
-    </div>
-  </div>
-
-  <div id="modal-haircut" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-haircut')">&times;</span>
-      <h2>Šišanje i stilizovanje</h2>
-      <p>Prilagođeno šišanje i stilizovanje prema rasi i preferencijama vašeg psa za stylish izgled.</p>
-      <img src="https://i.ytimg.com/vi/uUJoFCsvRVQ/maxresdefault.jpg" alt="Maltezer pas koji dobija šišanje i stilizovanje kod groomera">
-    </div>
-  </div>
-
-  <div id="modal-nail" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-nail')">&times;</span>
-      <h2>Skraćivanje noktiju</h2>
-      <p>Bezbedno i precizno skraćivanje noktiju da bi šape vašeg psa bile udobne i zdrave.</p>
-      <img src="https://media.gettyimages.com/id/2203831664/photo/adorable-poodle-getting-its-nails-trimmed-at-grooming-salon.jpg?s=1024x1024&w=gi&k=20&c=EGLCkshqpLWl3-c9EwVzSrbdXU6lh3kuMSCu_36nngk=" alt="Pudla pas čiji se nokti skraćuju tokom groominga">
-    </div>
-  </div>
-
-  <div id="modal-ear" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-ear')">&times;</span>
-      <h2>Čišćenje ušiju</h2>
-      <p>Temeljno čišćenje ušiju da bi se uklonile nečistoće i spriječile infekcije za bolje zdravlje ušiju.</p>
-      <img src="http://www.earthrated.com/cdn/shop/articles/Screenshot_2024-07-18_at_5.23.19_PM-208804_673aee46-3a21-4f25-9592-f69ba0ce400c-306857.png?v=1745864472&width=1314" alt="Šnaucer pas čije se uši čiste kod veterinara ili groomera">
-    </div>
-  </div>
-
-  <div id="modal-full" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-full')">&times;</span>
-      <h2>Kompletan grooming paket</h2>
-      <p>Kompletan grooming uključujući kupanje, šišanje, skraćivanje noktiju, čišćenje ušiju i više za potpuno razmazivanje.</p>
-      <img src="https://static.vecteezy.com/system/resources/thumbnails/068/246/106/small/yorkshire-terrier-receives-grooming-session-in-a-cozy-indoor-setting-photo.jpg" alt="Jorkširski terijer pas koji prima kompletan grooming paket">
-    </div>
-  </div>
-
   <footer>
-    <p>© 2026 GroomingPG – Podgorica, Crna Gora</p>
+    <p>© 2025 GroomingPG – Podgorica, Crna Gora</p>
     <div style="margin-top: 12px; display: flex; flex-direction: row; gap: 16px; justify-content: center; flex-wrap: wrap;">
       <a href="tel:+38268012911" style="color:white; background:rgba(255,255,255,0.2); padding:8px 18px; border-radius:30px; text-decoration:none; font-size:15px; display: flex; align-items: center; gap: 8px;">
         ☎️ +382-68-012-911
@@ -169,24 +123,6 @@
       </a>
     </div>
   </footer>
-
-  <!-- Modal JavaScript -->
-  <script>
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = "none";
-    }
-
-    // Close modal if clicking outside the content
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-        event.target.style.display = "none";
-      }
-    }
-  </script>
 
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
