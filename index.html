@@ -38,11 +38,11 @@
     <section>
       <h2>Our Services</h2>
       <ul>
-        <li>Bath & Dry</li>
-        <li>Haircut & Styling</li>
-        <li>Nail Trimming</li>
-        <li>Ear Cleaning</li>
-        <li>Full Grooming Package</li>
+        <li onclick="openModal('modal-bath')">Bath & Dry</li>
+        <li onclick="openModal('modal-haircut')">Haircut & Styling</li>
+        <li onclick="openModal('modal-nail')">Nail Trimming</li>
+        <li onclick="openModal('modal-ear')">Ear Cleaning</li>
+        <li onclick="openModal('modal-full')">Full Grooming Package</li>
       </ul>
     </section>
 
@@ -110,8 +110,54 @@
     </section>
   </div>
 
+  <!-- Modals for services -->
+  <div id="modal-bath" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-bath')">&times;</span>
+      <h2>Bath & Dry</h2>
+      <p>Gentle bath with premium shampoo followed by blow-drying for a fresh, clean coat.</p>
+      <img src="https://www.marriedwithbichons.com/wp-content/uploads/2022/11/20140123_101656_Park-Lake-Cir-scaled.jpg" alt="Bichon Frise dog being bathed and dried during grooming">
+    </div>
+  </div>
+
+  <div id="modal-haircut" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-haircut')">&times;</span>
+      <h2>Haircut & Styling</h2>
+      <p>Customized haircut and styling to suit your dog's breed and preferences for a stylish look.</p>
+      <img src="https://i.ytimg.com/vi/uUJoFCsvRVQ/maxresdefault.jpg" alt="Maltese dog getting a haircut and styling at groomer">
+    </div>
+  </div>
+
+  <div id="modal-nail" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-nail')">&times;</span>
+      <h2>Nail Trimming</h2>
+      <p>Safe and precise nail trimming to keep your dog's paws comfortable and healthy.</p>
+      <img src="https://media.gettyimages.com/id/2203831664/photo/adorable-poodle-getting-its-nails-trimmed-at-grooming-salon.jpg?s=1024x1024&w=gi&k=20&c=EGLCkshqpLWl3-c9EwVzSrbdXU6lh3kuMSCu_36nngk=" alt="Poodle dog having nails trimmed during grooming">
+    </div>
+  </div>
+
+  <div id="modal-ear" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-ear')">&times;</span>
+      <h2>Ear Cleaning</h2>
+      <p>Thorough ear cleaning to remove debris and prevent infections for better ear health.</p>
+      <img src="http://www.earthrated.com/cdn/shop/articles/Screenshot_2024-07-18_at_5.23.19_PM-208804_673aee46-3a21-4f25-9592-f69ba0ce400c-306857.png?v=1745864472&width=1314" alt="Schnauzer dog getting ears cleaned at vet or groomer">
+    </div>
+  </div>
+
+  <div id="modal-full" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-full')">&times;</span>
+      <h2>Full Grooming Package</h2>
+      <p>Complete grooming including bath, haircut, nail trim, ear cleaning, and more for total pampering.</p>
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/068/246/106/small/yorkshire-terrier-receives-grooming-session-in-a-cozy-indoor-setting-photo.jpg" alt="Yorkshire Terrier dog receiving full grooming package">
+    </div>
+  </div>
+
   <footer>
-    <p>© 2025 GroomingPG – Podgorica, Montenegro</p>
+    <p>© 2026 GroomingPG – Podgorica, Montenegro</p>
     <div style="margin-top: 12px; display: flex; flex-direction: row; gap: 16px; justify-content: center; flex-wrap: wrap;">
       <a href="tel:+38268012911" style="color:white; background:rgba(255,255,255,0.2); padding:8px 18px; border-radius:30px; text-decoration:none; font-size:15px; display: flex; align-items: center; gap: 8px;">
         ☎️ +382-68-012-911
@@ -122,13 +168,31 @@
     </div>
   </footer>
 
+  <!-- Modal JavaScript -->
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    // Close modal if clicking outside the content
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+      }
+    }
+  </script>
+
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
   s1.async=true;
-  s1.src='https://embed.tawk.to/69580def79eb3a1980eec692/1jdvvcrr5';
+  s1.src='https://embed.tawk.to/694c2228807596197f9cf3ba/1jd8marth';
   s1.charset='UTF-8';
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
