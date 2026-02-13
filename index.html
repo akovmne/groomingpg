@@ -14,7 +14,7 @@
     </div>
     <p>Professional Dog Grooming & Pickup Service in Podgorica</p>
     
-    <!-- Language switches in top-right corner -->
+    <!-- Language switches -->
     <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 12px; align-items: center;">
       <a href="index.html" style="color:white; background:rgba(0,0,0,0.3); padding:8px 16px; border-radius:30px; text-decoration:none; font-size:14px; display: flex; align-items: center; gap: 6px;">
         🇬🇧 ENG
@@ -24,7 +24,6 @@
       </a>
     </div>
     
-    <!-- Only app download remains in header -->
     <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px; align-items: center;">
       <a href="https://github.com/akovmne/groomingpg/releases/download/beta-1/groomingpg.apk" 
          style="color:white; background:rgba(0,0,0,0.3); padding:10px 20px; border-radius:30px; text-decoration:none; font-size:16px; display: flex; align-items: center; gap: 8px;"
@@ -37,12 +36,12 @@
   <div class="container">
     <section>
       <h2>Our Services</h2>
-      <ul>
-        <li>Bath & Dry</li>
-        <li>Haircut & Styling</li>
-        <li>Nail Trimming</li>
-        <li>Ear Cleaning</li>
-        <li>Full Grooming Package</li>
+      <ul class="service-list">
+        <li onclick="openModal('bath')">Bath & Dry – <span class="read-more">Read more</span></li>
+        <li onclick="openModal('haircut')">Haircut & Styling – <span class="read-more">Read more</span></li>
+        <li onclick="openModal('nails')">Nail Trimming – <span class="read-more">Read more</span></li>
+        <li onclick="openModal('ears')">Ear Cleaning – <span class="read-more">Read more</span></li>
+        <li onclick="openModal('full')">Full Grooming Package – <span class="read-more">Read more</span></li>
       </ul>
     </section>
 
@@ -101,12 +100,11 @@
     </section>
 
     <section>
-      <h2>Our Happy Clients ❤️(updating)</h2>
+      <h2>Our Happy Clients ❤️ (updating)</h2>
       <div class="gallery">
         <img src="images/dog4.jpg" alt="Groomed dog 4">
         <img src="images/dog2.jpg" alt="Groomed dog 2">
         <img src="images/dog3.jpg" alt="Groomed dog 3">
-        
       </div>
     </section>
   </div>
@@ -115,7 +113,7 @@
     <p>© 2026 GroomingPG – Podgorica, Montenegro</p>
     <div style="margin-top: 12px; display: flex; flex-direction: row; gap: 16px; justify-content: center; flex-wrap: wrap;">
       <a href="tel:+38268048865" style="color:white; background:rgba(255,255,255,0.2); padding:8px 18px; border-radius:30px; text-decoration:none; font-size:15px; display: flex; align-items: center; gap: 8px;">
-        ☎️ +382-68-048-965
+        ☎️ +382-68-048-865
       </a>
       <a href="mailto:info@groomingpg.com" style="color:white; background:rgba(255,255,255,0.2); padding:8px 18px; border-radius:30px; text-decoration:none; font-size:15px; display: flex; align-items: center; gap: 8px;">
         📧 info@groomingpg.com
@@ -123,7 +121,101 @@
     </div>
   </footer>
 
- <!--Start of Tawk.to Script-->
+  <!-- Modal for service details -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript for modal -->
+  <script>
+  function openModal(service) {
+    const modal = document.getElementById("serviceModal");
+    const title = document.getElementById("modalTitle");
+    const body = document.getElementById("modalBody");
+
+    let content = "";
+
+    if (service === "bath") {
+      title.textContent = "Bath & Dry";
+      content = `
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>Gentle bath with high-quality dog-safe shampoo and conditioner suited to coat type</li>
+          <li>Thorough rinsing to remove dirt, odors, and surface allergens</li>
+          <li>Professional blow-drying for a clean, fluffy, and mat-free coat</li>
+          <li>Light brushing and de-shedding</li>
+        </ul>
+        <p>Ideal for dogs needing a refresh without a full haircut.</p>
+      `;
+    } else if (service === "haircut") {
+      title.textContent = "Haircut & Styling";
+      content = `
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>Precise clipping and scissoring to owner preference or breed standard</li>
+          <li>Styling of face, paws, tail, and sanitary areas</li>
+          <li>Mat removal and prevention of future matting</li>
+          <li>Finishing touches for a polished, stylish look</li>
+        </ul>
+        <p>Especially recommended for long or curly-coated breeds (e.g., Poodles, Schnauzers).</p>
+      `;
+    } else if (service === "nails") {
+      title.textContent = "Nail Trimming";
+      content = `
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>Safe, painless nail clipping using professional tools</li>
+          <li>Avoiding the quick to prevent bleeding and pain</li>
+          <li>Optional nail grinding/buffing for smooth edges</li>
+        </ul>
+        <p>Prevents splitting, walking discomfort, and floor scratches.</p>
+      `;
+    } else if (service === "ears") {
+      title.textContent = "Ear Cleaning";
+      content = `
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>Gentle inspection of ears for irritation or infection signs</li>
+          <li>Cleaning with vet-approved ear solution and cotton pads</li>
+          <li>Removal of excess wax, debris, and hair from ear canal entrance</li>
+        </ul>
+        <p>Helps prevent ear infections and maintains ear health.</p>
+      `;
+    } else if (service === "full") {
+      title.textContent = "Full Grooming Package";
+      content = `
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>Bath, blow-dry, and thorough brushing/de-shedding</li>
+          <li>Full haircut and styling (breed-specific or custom)</li>
+          <li>Nail trimming and ear cleaning</li>
+          <li>Finishing cologne spritz and paw pad care</li>
+        </ul>
+        <p>Complete care for a fresh, healthy, and beautifully groomed dog.</p>
+      `;
+    }
+
+    body.innerHTML = content;
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("serviceModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("serviceModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+
+  <!-- Tawk.to -->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
@@ -135,6 +227,5 @@
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
-  <!--End of Tawk.to Script-->
 </body>
 </html>
