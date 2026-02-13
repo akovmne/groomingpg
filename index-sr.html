@@ -14,7 +14,6 @@
     </div>
     <p>Profesionalno šišanje pasa i usluga preuzimanja u Podgorici</p>
     
-    <!-- Language switches in top-right corner -->
     <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 12px; align-items: center;">
       <a href="index.html" style="color:white; background:rgba(0,0,0,0.3); padding:8px 16px; border-radius:30px; text-decoration:none; font-size:14px; display: flex; align-items: center; gap: 6px;">
         🇬🇧 ENG
@@ -24,7 +23,6 @@
       </a>
     </div>
     
-    <!-- Only app download remains in header -->
     <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px; align-items: center;">
       <a href="https://github.com/akovmne/groomingpg/releases/download/beta-1/groomingpg.apk" 
          style="color:white; background:rgba(0,0,0,0.3); padding:10px 20px; border-radius:30px; text-decoration:none; font-size:16px; display: flex; align-items: center; gap: 8px;"
@@ -37,12 +35,12 @@
   <div class="container">
     <section>
       <h2>Naše usluge</h2>
-      <ul>
-        <li>Kupanje i sušenje</li>
-        <li>Šišanje i stilizovanje</li>
-        <li>Skraćivanje noktiju</li>
-        <li>Čišćenje ušiju</li>
-        <li>Kompletan grooming paket</li>
+      <ul class="service-list">
+        <li onclick="openModal('bath')">Kupanje i sušenje – <span class="read-more">Pročitajte više</span></li>
+        <li onclick="openModal('haircut')">Šišanje i stilizovanje – <span class="read-more">Pročitajte više</span></li>
+        <li onclick="openModal('nails')">Skraćivanje noktiju – <span class="read-more">Pročitajte više</span></li>
+        <li onclick="openModal('ears')">Čišćenje ušiju – <span class="read-more">Pročitajte više</span></li>
+        <li onclick="openModal('full')">Kompletan grooming paket – <span class="read-more">Pročitajte više</span></li>
       </ul>
     </section>
 
@@ -103,12 +101,11 @@
     </section>
 
     <section>
-      <h2>Naši srećni klijenti ❤️(ažurira se)</h2>
+      <h2>Naši srećni klijenti ❤️ (ažurira se)</h2>
       <div class="gallery">
         <img src="images/dog4.jpg" alt="Negovani pas 4">
         <img src="images/dog2.jpg" alt="Negovani pas 2">
         <img src="images/dog3.jpg" alt="Negovani pas 3">
-        
       </div>
     </section>
   </div>
@@ -125,7 +122,101 @@
     </div>
   </footer>
 
-  <!--Start of Tawk.to Script-->
+  <!-- Modal for service details -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript for modal (bilingual version) -->
+  <script>
+  function openModal(service) {
+    const modal = document.getElementById("serviceModal");
+    const title = document.getElementById("modalTitle");
+    const body = document.getElementById("modalBody");
+
+    let content = "";
+
+    if (service === "bath") {
+      title.textContent = "Kupanje i sušenje";
+      content = `
+        <p><strong>Šta uključuje:</strong></p>
+        <ul>
+          <li>Nežno kupanje specijalnim šamponom i regeneratorom prilagođenim tipu dlake</li>
+          <li>Temeljno ispiranje i uklanjanje prljavštine, mirisa i alergena</li>
+          <li>Profesionalno sušenje fenom za savršeno čistu i pahuljastiju dlaku</li>
+          <li>Lagano četkanje i uklanjanje mrtve dlake</li>
+        </ul>
+        <p>Idealno za pse kojima je potrebno osvježenje bez potpunog šišanja.</p>
+      `;
+    } else if (service === "haircut") {
+      title.textContent = "Šišanje i stilizovanje";
+      content = `
+        <p><strong>Šta uključuje:</strong></p>
+        <ul>
+          <li>Precizno šišanje mašinicom i makazama po želji vlasnika ili standardu rase</li>
+          <li>Stilizovanje lica, šapa, repa i sanitarnih zona</li>
+          <li>Uklanjanje zamršene dlake i prevencija matiranja</li>
+          <li>Završni dodiri za elegantan i uredan izgled</li>
+        </ul>
+        <p>Posebno preporučeno za rase sa dugom ili kovrdžavom dlakom (npr. pudle, šnauceri).</p>
+      `;
+    } else if (service === "nails") {
+      title.textContent = "Skraćivanje noktiju";
+      content = `
+        <p><strong>Šta uključuje:</strong></p>
+        <ul>
+          <li>Sigurno i bezbolno skraćivanje noktiju specijalnim alatom</li>
+          <li>Izbjegavanje "brze" (krvne žile u noktu)</li>
+          <li>Opcionalno glačanje ivica noktiju (nail grinding)</li>
+        </ul>
+        <p>Sprečava lomljenje noktiju, bol pri hodanju i oštećenje podova.</p>
+      `;
+    } else if (service === "ears") {
+      title.textContent = "Čišćenje ušiju";
+      content = `
+        <p><strong>Šta uključuje:</strong></p>
+        <ul>
+          <li>Pregled ušiju na znakove iritacije ili infekcije</li>
+          <li>Čišćenje specijalnim rastvorom i pamučnim štapićima/vatom</li>
+          <li>Uklanjanje viška voska, prljavštine i dlačica</li>
+        </ul>
+        <p>Pomaže u prevenciji upala uha i održavanju zdravlja.</p>
+      `;
+    } else if (service === "full") {
+      title.textContent = "Kompletan grooming paket";
+      content = `
+        <p><strong>Šta uključuje:</strong></p>
+        <ul>
+          <li>Kupanje, sušenje i četkanje</li>
+          <li>Kompletno šišanje i stilizovanje</li>
+          <li>Skraćivanje noktiju i čišćenje ušiju</li>
+          <li>Završni osvježavajući sprej i njega šapa</li>
+        </ul>
+        <p>Sveobuhvatna njega za potpuno osvježen i njegovan izgled vašeg psa.</p>
+      `;
+    }
+
+    body.innerHTML = content;
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("serviceModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("serviceModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+
+  <!-- Tawk.to -->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
@@ -137,6 +228,5 @@
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
-  <!--End of Tawk.to Script-->
 </body>
 </html>
