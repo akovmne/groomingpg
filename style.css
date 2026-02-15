@@ -1,41 +1,4 @@
-/* ==================== ROOT VARIABLES ==================== */
-:root {
-  /* Light mode (default) */
-  --color-bg-body:        linear-gradient(to bottom, #e0f7fa 0%, #f8fdff 100%);
-  --color-text-main:      #2d2d2d;
-  --color-text-secondary: #555;
-  --color-text-light:     #777;
-  --color-primary:        #2c7a7b;
-  --color-primary-dark:   #1e5a5b;
-  --color-primary-light:  #3a9a9b;
-  --color-bg-card:        #ffffff;
-  --color-border:         #d0d0d0;
-  --color-shadow-soft:    rgba(0,0,0,0.08);
-  --color-shadow-medium:  rgba(0,0,0,0.14);
-  --color-shadow-strong:  rgba(0,0,0,0.22);
-  --color-header-overlay: rgba(44, 122, 123, 0.72), rgba(44, 122, 123, 0.55);
-  --color-btn-whatsapp:   #25D366;
-  --color-btn-instagram:  #C13584;
-}
-
-[data-theme="dark"] {
-  /* Dark mode */
-  --color-bg-body:        linear-gradient(to bottom, #0d1f20, #071314);
-  --color-text-main:      #e8f0f2;
-  --color-text-secondary: #b0c8cc;
-  --color-text-light:     #8aa0a5;
-  --color-primary:        #4aa0a2;
-  --color-primary-dark:   #3a8082;
-  --color-primary-light:  #5ac0c2;
-  --color-bg-card:        #13282a;
-  --color-border:         #3a5052;
-  --color-shadow-soft:    rgba(0,0,0,0.45);
-  --color-shadow-medium:  rgba(0,0,0,0.60);
-  --color-shadow-strong:  rgba(0,0,0,0.75);
-  --color-header-overlay: rgba(20, 60, 61, 0.88), rgba(20, 60, 61, 0.72);
-}
-
-/* ==================== BASE STYLES ==================== */
+/* ==================== General ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -45,18 +8,19 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: var(--color-text-main);
-  background: var(--color-bg-body);
+  color: #2d2d2d;
+  background: linear-gradient(to bottom, #e0f7fa 0%, #f8fdff 100%);
   min-height: 100vh;
-  transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* ==================== HEADER ==================== */
+/* ==================== Header ==================== */
 header {
   background: 
     linear-gradient(
-      var(--color-header-overlay),
-      url('images/hero.jpg') center center / cover no-repeat fixed;
+      rgba(44, 122, 123, 0.70),
+      rgba(44, 122, 123, 0.50)
+    ),
+    url('images/hero.jpg') center center / cover no-repeat fixed;
   color: white;
   text-align: center;
   padding: 100px 20px 80px;
@@ -66,7 +30,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: background 0.6s ease;
 }
 
 .logo-container {
@@ -77,61 +40,64 @@ header {
   max-width: 200px;
   height: auto;
   border-radius: 50%;
-  border: 6px solid rgba(255,255,255,0.92);
-  box-shadow: 0 8px 28px var(--color-shadow-strong);
-  background: rgba(255,255,255,0.12);
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.15);
 }
 
 header p {
   font-size: 1.45rem;
   font-weight: 500;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.75);
+  text-shadow: 0 3px 12px rgba(0,0,0,0.7);
   max-width: 90%;
-  margin: 0 auto 35px;
+  margin: 0 auto 30px;
 }
 
-/* Language switcher + app button */
-.lang-switch a,
-.app-download a {
+header .lang-switch a,
+header .app-download a {
   color: white;
   background: rgba(0,0,0,0.45);
   padding: 10px 20px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
-.lang-switch a:hover,
-.app-download a:hover {
-  background: rgba(0,0,0,0.68);
+header .lang-switch a:hover,
+header .app-download a:hover {
+  background: rgba(0,0,0,0.65);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
 }
 
-/* ==================== MAIN CONTENT ==================== */
+/* ==================== Container & Typography ==================== */
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px 70px;
+  padding: 0 20px 60px;
 }
 
 h1 {
-  color: var(--color-primary);
-  font-size: 2.5rem;
-  margin: 50px 0 25px;
+  color: #2c7a7b;
+  font-size: 2.4rem;
+  margin: 50px 0 20px;
   text-align: center;
   line-height: 1.2;
 }
 
 h2 {
-  color: var(--color-primary);
-  font-size: 2rem;
-  margin: 55px 0 25px;
+  color: #2c7a7b;
+  font-size: 1.9rem;
+  margin: 50px 0 20px;
   text-align: center;
 }
 
-/* Services list */
+p {
+  margin-bottom: 1.4rem;
+}
+
+/* ==================== Services ==================== */
 .service-list {
   list-style: none;
   padding: 0;
@@ -139,284 +105,220 @@ h2 {
 }
 
 .service-list li {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  font-size: 1.18rem;
+  transition: all 0.25s ease;
+  font-size: 1.15rem;
 }
 
 .service-list li:hover {
-  transform: translateX(12px) scale(1.015);
-  background: rgba(44,122,123,0.09);
-  box-shadow: 0 4px 16px rgba(44,122,123,0.12);
-  color: var(--color-primary);
+  background-color: rgba(44, 122, 123, 0.07);
+  padding-left: 16px;
+  color: #2c7a7b;
 }
 
 .read-more {
-  color: var(--color-primary);
+  color: #2c7a7b;
   font-weight: 600;
   text-decoration: underline;
   margin-left: 10px;
   font-size: 0.98rem;
 }
 
-/* Form */
+/* ==================== Form ==================== */
 form {
-  background: var(--color-bg-card);
+  background: white;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 36px var(--color-shadow-medium);
-  margin: 45px auto;
-  max-width: 700px;
-  transition: all 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin: 40px 0;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 label {
   display: block;
-  margin: 16px 0 7px;
+  margin: 14px 0 6px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #2c7a7b;
 }
 
 input, select, textarea {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 20px;
-  border: 1px solid var(--color-border);
+  padding: 13px;
+  margin-bottom: 18px;
+  border: 1px solid #d0d0d0;
   border-radius: 8px;
   font-size: 1rem;
-  background: var(--color-bg-body);
-  color: var(--color-text-main);
-  transition: all 0.25s;
+  transition: border-color 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(44,122,123,0.15);
+  border-color: #2c7a7b;
+  box-shadow: 0 0 0 3px rgba(44,122,123,0.12);
 }
 
 button {
-  background: var(--color-primary);
+  background: #2c7a7b;
   color: white;
   border: none;
-  padding: 16px 36px;
+  padding: 15px 32px;
   font-size: 1.15rem;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s;
   display: block;
-  margin: 25px auto 0;
-  position: relative;
-  overflow: hidden;
+  margin: 20px auto 0;
 }
 
 button:hover {
-  background: var(--color-primary-dark);
+  background: #1e5a5b;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(44,122,123,0.35);
+  box-shadow: 0 6px 20px rgba(44,122,123,0.3);
 }
 
-/* Shine effect on button hover */
-button::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -100%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.25),
-    transparent
-  );
-  transition: left 0.6s;
-}
-
-button:hover::after {
-  left: 120%;
-}
-
-/* Social buttons */
-.whatsapp-btn {
-  background: var(--color-btn-whatsapp);
-}
-
-.instagram-btn {
-  background: var(--color-btn-instagram);
-}
-
+/* ==================== Social / Contact Buttons ==================== */
 .whatsapp-btn, .instagram-btn {
-  color: white;
-  padding: 16px 36px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.12rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 18px 0;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.25s;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+}
+
+.instagram-btn {
+  background: #C13584;
 }
 
 .whatsapp-btn:hover, .instagram-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px var(--color-shadow-strong);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
-/* Small text */
 .small-text {
   font-size: 0.95rem;
-  color: var(--color-text-secondary);
+  color: #666;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
-/* Gallery */
+/* ==================== Gallery ==================== */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .gallery img {
   width: 100%;
   border-radius: 14px;
-  box-shadow: 0 8px 24px var(--color-shadow-medium);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery img:hover {
-  transform: scale(1.06) translateY(-8px);
-  box-shadow: 0 16px 40px var(--color-shadow-strong);
-  filter: brightness(1.05) contrast(1.03);
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
 }
 
-/* Modal */
+/* ==================== Modal ==================== */
 .modal {
   display: none;
   position: fixed;
-  inset: 0;
   z-index: 1000;
-  background: rgba(0,0,0,0.65);
-  overflow-y: auto;
-  padding: 60px 15px;
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.modal[style*="display: block"] {
-  opacity: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  padding-top: 60px;
 }
 
 .modal-content {
-  background: var(--color-bg-card);
-  color: var(--color-text-main);
-  margin: 0 auto;
+  background-color: #fff;
+  margin: 6% auto;
   padding: 32px;
   border-radius: 16px;
   width: 90%;
-  max-width: 660px;
-  box-shadow: 0 16px 48px var(--color-shadow-strong);
-  transform: scale(0.92);
-  opacity: 0;
-  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.modal[style*="display: block"] .modal-content {
-  transform: scale(1);
-  opacity: 1;
+  max-width: 640px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.35);
+  position: relative;
 }
 
 .close {
-  color: var(--color-text-secondary);
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  font-size: 44px;
+  color: #444;
+  float: right;
+  font-size: 42px;
   font-weight: bold;
   cursor: pointer;
   line-height: 0.7;
-  transition: color 0.25s;
 }
 
-.close:hover {
-  color: var(--color-text-main);
+.close:hover,
+.close:focus {
+  color: #000;
 }
 
-/* Footer */
+/* ==================== Footer ==================== */
 footer {
-  background: var(--color-primary);
+  background: #2c7a7b;
   color: white;
   text-align: center;
-  padding: 45px 20px;
-  margin-top: 70px;
+  padding: 40px 20px;
+  margin-top: 60px;
 }
 
 footer a {
   color: white;
   text-decoration: none;
-  margin: 0 14px;
-  transition: color 0.25s;
+  margin: 0 12px;
+  transition: color 0.2s;
 }
 
 footer a:hover {
-  color: #d0f0f0;
+  color: #e0f7fa;
 }
 
-/* ==================== DARK MODE TOGGLE ==================== */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9999;
-  background: rgba(0,0,0,0.45);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease, transform 0.5s ease;
-}
-
-.theme-toggle:hover {
-  background: rgba(0,0,0,0.7);
-  transform: scale(1.12);
-}
-
-.theme-toggle:active {
-  transform: rotate(180deg) scale(0.95);
-}
-
-/* ==================== RESPONSIVE ==================== */
+/* ==================== Responsive ==================== */
 @media (max-width: 768px) {
   header {
     padding: 80px 15px 60px;
-    min-height: 420px;
+    min-height: 400px;
   }
 
   .logo {
     max-width: 160px;
   }
 
-  h1 { font-size: 2.1rem; }
-  h2 { font-size: 1.8rem; }
+  header p {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
 
   form {
-    padding: 32px 20px;
+    padding: 30px;
   }
 
   .gallery {
@@ -424,13 +326,13 @@ footer a:hover {
   }
 
   .modal-content {
+    margin: 10% auto;
     padding: 24px;
     width: 94%;
   }
 
   .close {
-    font-size: 38px;
-    right: 18px;
+    font-size: 36px;
   }
 }
 
@@ -441,13 +343,5 @@ footer a:hover {
 
   .logo {
     max-width: 140px;
-  }
-
-  .theme-toggle {
-    top: 16px;
-    left: 16px;
-    width: 46px;
-    height: 46px;
-    font-size: 1.35rem;
   }
 }
