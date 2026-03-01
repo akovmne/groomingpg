@@ -64,19 +64,26 @@
   </script>
 
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://groomingpg.com/style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
   <header>
     <div class="logo-container">
-      <img src="/images/logomne.jpg" alt="GroomingPG logo – Najbolje šišanje pasa Podgorica i profesionalna njega pasa" class="logo">
+      <img src="../images/logomne.jpg" alt="GroomingPG logo – Najbolje šišanje pasa Podgorica i profesionalna njega pasa" class="logo">
     </div>
     <p>Profesionalno šišanje pasa i usluga preuzimanja u Podgorici</p>
 
     <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 12px; align-items: center;">
       <a href="https://groomingpg.com/" style="color:white; background:rgba(0,0,0,0.3); padding:8px 16px; border-radius:30px; text-decoration:none; font-size:14px;">🇬🇧 ENG</a>
       <a href="https://groomingpg.com/sr/" style="color:white; background:rgba(0,0,0,0.3); padding:8px 16px; border-radius:30px; text-decoration:none; font-size:14px;">🇲🇪 CG</a>
+    </div>
+
+    <div style="position: absolute; top: 20px; left: 20px;">
+      <button onclick="openClientModal()"
+        style="background: rgba(255,255,255,0.25); color: white; border: 1px solid white; padding: 10px 18px; border-radius: 30px; cursor: pointer; font-size: 15px;">
+        👤 Klijentski profil
+      </button>
     </div>
 
     <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px; align-items: center;">
@@ -165,11 +172,11 @@
     <section>
       <h2>Naši srećni klijenti ❤️ (ažurira se)</h2>
       <div class="gallery">
-        <img src="/images/dog4.jpg" alt="Profesionalno šišanje pasa Podgorica – sretan uređen pas nakon kompletnog groominga">
-        <img src="/images/dog2.jpg" alt="Njega pasa Podgorica – prije i poslije šišanja i kupanja u salonu GroomingPG">
-        <img src="/images/dog3.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
-        <img src="/images/dog6.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
-        <img src="/images/dog7.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
+        <img src="../images/dog4.jpg" alt="Profesionalno šišanje pasa Podgorica – sretan uređen pas nakon kompletnog groominga">
+        <img src="../images/dog2.jpg" alt="Njega pasa Podgorica – prije i poslije šišanja i kupanja u salonu GroomingPG">
+        <img src="../images/dog3.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
+        <img src="../images/dog6.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
+        <img src="../images/dog7.jpg" alt="Salon za pse Podgorica – GroomingPG rezultati profesionalnog groominga pasa">
       </div>
     </section>
   </div>
@@ -195,7 +202,59 @@
     </div>
   </div>
 
-  <!-- Modal JavaScript (Serbian / Montenegrin version) -->
+  <!-- Client Profile Modal -->
+  <div id="clientModal" class="modal">
+    <div class="modal-content" style="max-width: 580px;">
+      <span class="close" onclick="closeClientModal()">×</span>
+      <h2 id="clientModalTitle">Profil klijenta</h2>
+      
+      <div id="clientNotLogged" style="display: block;">
+        <p>Dobar dan! Unesite broj telefona da biste pristupili Vašem profilu psa.</p>
+        <label for="phoneInput">Broj telefona</label>
+        <input type="tel" id="phoneInput" placeholder="+38268123456" style="margin-bottom: 20px;">
+        <button onclick="loginOrRegisterClient()" style="background:#2c7a7b; color:white; padding:12px 28px; border:none; border-radius:30px; cursor:pointer;">
+          Prijava / Registracija
+        </button>
+        <p style="margin-top:20px; font-size:0.95rem; color:#555;">
+          Prvi put? Samo unesite broj — profil će se automatski kreirati.
+        </p>
+      </div>
+
+      <div id="clientProfile" style="display: none;">
+        <p><strong>Vlasnik:</strong> <input type="text" id="ownerName" placeholder="Vaše ime"></p>
+        <p><strong>Telefon:</strong> <span id="phoneDisplay"></span></p>
+        <p><strong>PAS:</strong> <input type="text" id="dogInfo" placeholder="Ime i rasa"></p>
+        
+        <h3 style="margin:30px 0 10px; color:#2c7a7b;">Poslednji tretman</h3>
+        <p><strong>Datum:</strong> <input type="date" id="lastGroomingDate"></p>
+        <p><strong>Cijena kompletnog tretmana:</strong> 30 € (šišanje + kupanje + nokti + uši + prevoz)</p>
+        
+        <h3 style="margin:25px 0 10px; color:#2c7a7b;">Mjere</h3>
+        <p><strong>Vrat:</strong> <input type="text" id="measNeck" placeholder="npr. 38 cm"> cm</p>
+        <p><strong>Grudi:</strong> <input type="text" id="measChest" placeholder="npr. 62 cm"> cm</p>
+        <p><strong>Leđa:</strong> <input type="text" id="measBack" placeholder="npr. 48 cm"> cm</p>
+        <p><strong>Težina:</strong> <input type="text" id="measWeight" placeholder="npr. 12 kg"> kg</p>
+        
+        <h3 style="margin:25px 0 10px; color:#2c7a7b;">Bilješke</h3>
+        <textarea id="clientNotes" rows="5" placeholder="Posebne želje, alergije, ponašanje..."></textarea>
+
+        <div style="margin:30px auto; text-align:center;">
+          <button onclick="saveClientProfile()" style="background:#2c7a7b; color:white; padding:14px 40px; border:none; border-radius:999px; font-size:1.1rem; cursor:pointer;">
+            Sačuvaj promjene
+          </button>
+          <button onclick="exportProfile()" style="margin-left:15px; background:#4a90e2; color:white; padding:12px 24px; border:none; border-radius:30px; cursor:pointer;">
+            Preuzmi backup (JSON)
+          </button>
+          <input type="file" id="importFile" accept=".json" style="display:none;" onchange="importProfile(event)">
+          <button onclick="document.getElementById('importFile').click()" style="margin-left:15px; background:#f39c12; color:white; padding:12px 24px; border:none; border-radius:30px; cursor:pointer;">
+            Uvezi backup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript: Service Modal -->
   <script>
   function openModal(service) {
     const modal = document.getElementById("serviceModal");
@@ -232,6 +291,134 @@
   window.onclick = function(event) {
     const modal = document.getElementById("serviceModal");
     if (event.target == modal) modal.style.display = "none";
+  }
+  </script>
+
+  <!-- JavaScript: Client Profile -->
+  <script>
+  function openClientModal() {
+    document.getElementById("clientModal").style.display = "block";
+    loadClientProfile();
+  }
+
+  function closeClientModal() {
+    document.getElementById("clientModal").style.display = "none";
+  }
+
+  function loginOrRegisterClient() {
+    const phone = document.getElementById("phoneInput").value.trim().replace(/\s+/g, '');
+    if (!phone) {
+      alert("Molimo unesite broj telefona");
+      return;
+    }
+
+    const key = "groomingpg_client_" + phone;
+    let data = localStorage.getItem(key);
+
+    if (data) {
+      showProfileSection(phone);
+    } else {
+      const defaultData = {
+        phone: phone,
+        ownerName: "",
+        dogInfo: "",
+        lastGroomingDate: "",
+        measNeck: "", measChest: "", measBack: "", measWeight: "",
+        notes: "Dobar dan! Kompletan tretman je 30 eur uključujući šišanje, kupanje, tretman noktiju, tretman ušiju sa antibiotskim i antifugalnim kapima i uslugom prevoza od i do vlasnika ljubimca.\nPozdrav. 🐶GroomingPG"
+      };
+      localStorage.setItem(key, JSON.stringify(defaultData));
+      showProfileSection(phone);
+    }
+  }
+
+  function showProfileSection(phone) {
+    document.getElementById("clientNotLogged").style.display = "none";
+    document.getElementById("clientProfile").style.display = "block";
+    document.getElementById("phoneDisplay").textContent = phone;
+    loadClientProfile(phone);
+  }
+
+  function loadClientProfile(phone = null) {
+    if (!phone) {
+      phone = localStorage.getItem("last_grooming_phone");
+      if (!phone) return;
+    }
+
+    const key = "groomingpg_client_" + phone;
+    const data = localStorage.getItem(key);
+    if (!data) return;
+
+    const profile = JSON.parse(data);
+
+    document.getElementById("ownerName").value = profile.ownerName || "";
+    document.getElementById("dogInfo").value = profile.dogInfo || "";
+    document.getElementById("lastGroomingDate").value = profile.lastGroomingDate || "";
+    document.getElementById("measNeck").value = profile.measNeck || "";
+    document.getElementById("measChest").value = profile.measChest || "";
+    document.getElementById("measBack").value = profile.measBack || "";
+    document.getElementById("measWeight").value = profile.measWeight || "";
+    document.getElementById("clientNotes").value = profile.notes || "";
+
+    localStorage.setItem("last_grooming_phone", phone);
+  }
+
+  function saveClientProfile() {
+    const phone = document.getElementById("phoneDisplay").textContent;
+    if (!phone) return;
+
+    const key = "groomingpg_client_" + phone;
+
+    const profile = {
+      phone: phone,
+      ownerName: document.getElementById("ownerName").value,
+      dogInfo: document.getElementById("dogInfo").value,
+      lastGroomingDate: document.getElementById("lastGroomingDate").value,
+      measNeck: document.getElementById("measNeck").value,
+      measChest: document.getElementById("measChest").value,
+      measBack: document.getElementById("measBack").value,
+      measWeight: document.getElementById("measWeight").value,
+      notes: document.getElementById("clientNotes").value
+    };
+
+    localStorage.setItem(key, JSON.stringify(profile));
+    alert("Profil je sačuvan!");
+  }
+
+  function exportProfile() {
+    const phone = document.getElementById("phoneDisplay").textContent;
+    if (!phone) return alert("Nema učitanog profila.");
+    const key = "groomingpg_client_" + phone;
+    const data = localStorage.getItem(key);
+    if (!data) return alert("Nema podataka za preuzimanje.");
+
+    const blob = new Blob([data], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `groomingpg_profil_${phone}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function importProfile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const profile = JSON.parse(e.target.result);
+        if (!profile.phone) throw new Error("Neispravan fajl profila");
+        const key = "groomingpg_client_" + profile.phone;
+        localStorage.setItem(key, JSON.stringify(profile));
+        alert("Profil uspješno uvezen!");
+        document.getElementById("phoneInput").value = profile.phone;
+        loginOrRegisterClient();
+      } catch(err) {
+        alert("Greška pri uvozu: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
   }
   </script>
 
