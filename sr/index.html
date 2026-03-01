@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="sr">
 <head>
   <meta charset="UTF-8">
@@ -199,7 +199,7 @@
     </div>
   </div>
 
-  <!-- Client Profile Modal with Photo Upload -->
+  <!-- Client Profile Modal -->
   <div id="clientModal" class="modal">
     <div class="modal-content" style="max-width: 580px;">
       <span class="close" onclick="closeClientModal()">×</span>
@@ -218,17 +218,6 @@
       </div>
 
       <div id="clientProfile" style="display: none;">
-        <div style="text-align:center; margin: 0 0 25px;">
-          <img id="profilePhoto" 
-               src="https://via.placeholder.com/140?text=Fotografija+psa" 
-               alt="Fotografija psa" 
-               style="width:140px; height:140px; object-fit:cover; border-radius:50%; border:4px solid #2c7a7b; background:#f8f9fa; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-          <p style="margin:12px 0 8px; font-size:0.95rem; color:#555;">
-            <strong>Postavite fotografiju psa</strong>
-          </p>
-          <input type="file" id="photoUpload" accept="image/*" style="margin:0 auto; display:block; font-size:0.95rem;">
-        </div>
-
         <p><strong>Vlasnik:</strong> <input type="text" id="ownerName" placeholder="Vaše ime"></p>
         <p><strong>Telefon:</strong> <span id="phoneDisplay"></span></p>
         <p><strong>PAS:</strong> <input type="text" id="dogInfo" placeholder="Ime i rasa"></p>
@@ -265,7 +254,7 @@
     </div>
   </div>
 
-  <!-- JavaScript: Service Modal -->
+  <!-- Service Modal Script -->
   <script>
   function openModal(service) {
     const modal = document.getElementById("serviceModal");
@@ -300,12 +289,11 @@
   }
 
   window.onclick = function(event) {
-    const modal = document.getElementById("serviceModal");
-    if (event.target == modal) modal.style.display = "none";
-  }
+    if (event.target === document.getElementById("serviceModal")) closeModal();
+  };
   </script>
 
-  <!-- JavaScript: Client Profile with Photo -->
+  <!-- Client Profile Scripts -->
   <script>
   function openClientModal() {
     document.getElementById("clientModal").style.display = "block";
@@ -335,7 +323,6 @@
         dogInfo: "",
         lastGroomingDate: "",
         measNeck: "", measChest: "", measBack: "", measWeight: "",
-        photo: "https://via.placeholder.com/140?text=Fotografija+psa",
         notes: "Dobar dan! Kompletan tretman je 30 eur uključujući šišanje, kupanje, tretman noktiju, tretman ušiju sa antibiotskim i antifugalnim kapima i uslugom prevoza od i do vlasnika ljubimca.\nPozdrav. 🐶GroomingPG"
       };
       localStorage.setItem(key, JSON.stringify(defaultData));
@@ -362,17 +349,14 @@
 
     const profile = JSON.parse(data);
 
-    document.getElementById("ownerName").value = profile.ownerName || "";
-    document.getElementById("dogInfo").value = profile.dogInfo || "";
+    document.getElementById("ownerName").value     = profile.ownerName     || "";
+    document.getElementById("dogInfo").value       = profile.dogInfo       || "";
     document.getElementById("lastGroomingDate").value = profile.lastGroomingDate || "";
-    document.getElementById("measNeck").value = profile.measNeck || "";
-    document.getElementById("measChest").value = profile.measChest || "";
-    document.getElementById("measBack").value = profile.measBack || "";
-    document.getElementById("measWeight").value = profile.measWeight || "";
-    document.getElementById("clientNotes").value = profile.notes || "";
-
-    const photoEl = document.getElementById("profilePhoto");
-    photoEl.src = profile.photo || "https://via.placeholder.com/140?text=Fotografija+psa";
+    document.getElementById("measNeck").value      = profile.measNeck      || "";
+    document.getElementById("measChest").value     = profile.measChest     || "";
+    document.getElementById("measBack").value      = profile.measBack      || "";
+    document.getElementById("measWeight").value    = profile.measWeight    || "";
+    document.getElementById("clientNotes").value   = profile.notes         || "";
 
     localStorage.setItem("last_grooming_phone", phone);
   }
@@ -392,30 +376,12 @@
       measChest: document.getElementById("measChest").value,
       measBack: document.getElementById("measBack").value,
       measWeight: document.getElementById("measWeight").value,
-      notes: document.getElementById("clientNotes").value,
-      photo: document.getElementById("profilePhoto").src
+      notes: document.getElementById("clientNotes").value
     };
 
     localStorage.setItem(key, JSON.stringify(profile));
     alert("Profil je sačuvan!");
   }
-
-  // Photo upload handler
-  document.getElementById("photoUpload")?.addEventListener("change", function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Slika je prevelika. Koristite sliku manju od 2 MB.");
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(ev) {
-      document.getElementById("profilePhoto").src = ev.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
 
   function exportProfile() {
     const phone = document.getElementById("phoneDisplay").textContent;
@@ -468,7 +434,7 @@
 
     alert("Profil je uspješno obrisan.");
 
-    document.getElementById("profilePhoto").src = "https://via.placeholder.com/140?text=Fotografija+psa";
+    // Clear fields
     document.getElementById("ownerName").value = "";
     document.getElementById("dogInfo").value = "";
     document.getElementById("lastGroomingDate").value = "";
@@ -478,6 +444,7 @@
     document.getElementById("measWeight").value = "";
     document.getElementById("clientNotes").value = "";
 
+    // Switch back to login view
     document.getElementById("clientProfile").style.display = "none";
     document.getElementById("clientNotLogged").style.display = "block";
     document.getElementById("phoneInput").value = "";
