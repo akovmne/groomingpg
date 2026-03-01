@@ -204,7 +204,7 @@
     </div>
   </div>
 
-  <!-- Client Profile Modal -->
+  <!-- Client Profile Modal with Photo Upload -->
   <div id="clientModal" class="modal">
     <div class="modal-content" style="max-width: 580px;">
       <span class="close" onclick="closeClientModal()">×</span>
@@ -223,6 +223,17 @@
       </div>
 
       <div id="clientProfile" style="display: none;">
+        <div style="text-align:center; margin: 0 0 25px;">
+          <img id="profilePhoto" 
+               src="https://via.placeholder.com/140?text=Dog+Photo" 
+               alt="Dog profile photo" 
+               style="width:140px; height:140px; object-fit:cover; border-radius:50%; border:4px solid #2c7a7b; background:#f8f9fa; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          <p style="margin:12px 0 8px; font-size:0.95rem; color:#555;">
+            <strong>Upload your dog's photo</strong>
+          </p>
+          <input type="file" id="photoUpload" accept="image/*" style="margin:0 auto; display:block; font-size:0.95rem;">
+        </div>
+
         <p><strong>Owner:</strong> <input type="text" id="ownerName" placeholder="Your name"></p>
         <p><strong>Phone:</strong> <span id="phoneDisplay"></span></p>
         <p><strong>Dog:</strong> <input type="text" id="dogInfo" placeholder="Name & breed"></p>
@@ -259,7 +270,7 @@
     </div>
   </div>
 
-  <!-- Service Modal Script -->
+  <!-- JavaScript: Service Modal -->
   <script>
   function openModal(service) {
     const modal = document.getElementById("serviceModal");
@@ -294,11 +305,12 @@
   }
 
   window.onclick = function(event) {
-    if (event.target === document.getElementById("serviceModal")) closeModal();
-  };
+    const modal = document.getElementById("serviceModal");
+    if (event.target == modal) modal.style.display = "none";
+  }
   </script>
 
-  <!-- Client Profile Scripts -->
+  <!-- JavaScript: Client Profile with Photo -->
   <script>
   function openClientModal() {
     document.getElementById("clientModal").style.display = "block";
@@ -328,6 +340,7 @@
         dogInfo: "",
         lastGroomingDate: "",
         measNeck: "", measChest: "", measBack: "", measWeight: "",
+        photo: "https://via.placeholder.com/140?text=Dog+Photo",
         notes: "Hello! Full treatment is 30 EUR including haircut, bath, nail treatment, ear treatment with antibiotic and antifungal drops, and pickup & delivery service to/from the owner.\nBest regards. 🐶GroomingPG"
       };
       localStorage.setItem(key, JSON.stringify(defaultData));
@@ -354,14 +367,17 @@
 
     const profile = JSON.parse(data);
 
-    document.getElementById("ownerName").value     = profile.ownerName     || "";
-    document.getElementById("dogInfo").value       = profile.dogInfo       || "";
+    document.getElementById("ownerName").value = profile.ownerName || "";
+    document.getElementById("dogInfo").value = profile.dogInfo || "";
     document.getElementById("lastGroomingDate").value = profile.lastGroomingDate || "";
-    document.getElementById("measNeck").value      = profile.measNeck      || "";
-    document.getElementById("measChest").value     = profile.measChest     || "";
-    document.getElementById("measBack").value      = profile.measBack      || "";
-    document.getElementById("measWeight").value    = profile.measWeight    || "";
-    document.getElementById("clientNotes").value   = profile.notes         || "";
+    document.getElementById("measNeck").value = profile.measNeck || "";
+    document.getElementById("measChest").value = profile.measChest || "";
+    document.getElementById("measBack").value = profile.measBack || "";
+    document.getElementById("measWeight").value = profile.measWeight || "";
+    document.getElementById("clientNotes").value = profile.notes || "";
+
+    const photoEl = document.getElementById("profilePhoto");
+    photoEl.src = profile.photo || "https://via.placeholder.com/140?text=Dog+Photo";
 
     localStorage.setItem("last_grooming_phone", phone);
   }
@@ -381,12 +397,30 @@
       measChest: document.getElementById("measChest").value,
       measBack: document.getElementById("measBack").value,
       measWeight: document.getElementById("measWeight").value,
-      notes: document.getElementById("clientNotes").value
+      notes: document.getElementById("clientNotes").value,
+      photo: document.getElementById("profilePhoto").src
     };
 
     localStorage.setItem(key, JSON.stringify(profile));
     alert("Profile saved successfully!");
   }
+
+  // Photo upload handler
+  document.getElementById("photoUpload")?.addEventListener("change", function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert("Image is too large. Please use an image smaller than 2 MB.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      document.getElementById("profilePhoto").src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 
   function exportProfile() {
     const phone = document.getElementById("phoneDisplay").textContent;
@@ -439,7 +473,7 @@
 
     alert("Profile deleted successfully.");
 
-    // Clear fields
+    document.getElementById("profilePhoto").src = "https://via.placeholder.com/140?text=Dog+Photo";
     document.getElementById("ownerName").value = "";
     document.getElementById("dogInfo").value = "";
     document.getElementById("lastGroomingDate").value = "";
@@ -449,7 +483,6 @@
     document.getElementById("measWeight").value = "";
     document.getElementById("clientNotes").value = "";
 
-    // Switch back to login view
     document.getElementById("clientProfile").style.display = "none";
     document.getElementById("clientNotLogged").style.display = "block";
     document.getElementById("phoneInput").value = "";
