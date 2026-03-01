@@ -9,21 +9,17 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="GroomingPG">
 
-  <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://groomingpg.com/" />
   <link rel="alternate" hreflang="en" href="https://groomingpg.com/" />
   <link rel="alternate" hreflang="sr" href="https://groomingpg.com/sr/" />
   <link rel="alternate" hreflang="x-default" href="https://groomingpg.com/" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="GroomingPG – Dog Grooming Podgorica | Professional Pet Grooming">
   <meta property="og:description" content="Quality dog grooming services in Podgorica: bath, haircut, nails, ears, full package + pickup & delivery. Your pet deserves the best care in Montenegro!">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://groomingpg.com/">
   <meta property="og:image" content="https://groomingpg.com/images/dog2.jpg">
-  <meta property="og:image:alt" content="Happy professionally groomed dog – GroomingPG Podgorica">
 
-  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dog Grooming Podgorica – GroomingPG">
   <meta name="twitter:description" content="Professional dog grooming salon in Podgorica – bath, haircut, full grooming with pickup service. Book now!">
@@ -212,7 +208,7 @@
   <div id="clientModal" class="modal">
     <div class="modal-content" style="max-width: 580px;">
       <span class="close" onclick="closeClientModal()">×</span>
-      <h2 id="clientModalTitle">Client Profile</h2>
+      <h2>Client Profile</h2>
       
       <div id="clientNotLogged" style="display: block;">
         <p>Hello! Enter your phone number to access or create your dog's profile.</p>
@@ -255,12 +251,15 @@
           <button onclick="document.getElementById('importFile').click()" style="margin-left:15px; background:#f39c12; color:white; padding:12px 24px; border:none; border-radius:30px; cursor:pointer;">
             Import Backup
           </button>
+          <button onclick="deleteClientProfile()" style="margin-left:15px; background:#e74c3c; color:white; padding:12px 24px; border:none; border-radius:30px; cursor:pointer;">
+            Delete My Profile
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript: Service Modal -->
+  <!-- Service Modal Script -->
   <script>
   function openModal(service) {
     const modal = document.getElementById("serviceModal");
@@ -295,12 +294,11 @@
   }
 
   window.onclick = function(event) {
-    const modal = document.getElementById("serviceModal");
-    if (event.target == modal) modal.style.display = "none";
-  }
+    if (event.target === document.getElementById("serviceModal")) closeModal();
+  };
   </script>
 
-  <!-- JavaScript: Client Profile -->
+  <!-- Client Profile Scripts -->
   <script>
   function openClientModal() {
     document.getElementById("clientModal").style.display = "block";
@@ -356,14 +354,14 @@
 
     const profile = JSON.parse(data);
 
-    document.getElementById("ownerName").value = profile.ownerName || "";
-    document.getElementById("dogInfo").value = profile.dogInfo || "";
+    document.getElementById("ownerName").value     = profile.ownerName     || "";
+    document.getElementById("dogInfo").value       = profile.dogInfo       || "";
     document.getElementById("lastGroomingDate").value = profile.lastGroomingDate || "";
-    document.getElementById("measNeck").value = profile.measNeck || "";
-    document.getElementById("measChest").value = profile.measChest || "";
-    document.getElementById("measBack").value = profile.measBack || "";
-    document.getElementById("measWeight").value = profile.measWeight || "";
-    document.getElementById("clientNotes").value = profile.notes || "";
+    document.getElementById("measNeck").value      = profile.measNeck      || "";
+    document.getElementById("measChest").value     = profile.measChest     || "";
+    document.getElementById("measBack").value      = profile.measBack      || "";
+    document.getElementById("measWeight").value    = profile.measWeight    || "";
+    document.getElementById("clientNotes").value   = profile.notes         || "";
 
     localStorage.setItem("last_grooming_phone", phone);
   }
@@ -424,7 +422,37 @@
       }
     };
     reader.readAsText(file);
-    event.target.value = ''; // reset input
+    event.target.value = '';
+  }
+
+  function deleteClientProfile() {
+    const phone = document.getElementById("phoneDisplay").textContent;
+    if (!phone) return;
+
+    if (!confirm("Are you sure you want to delete your profile? This cannot be undone.")) {
+      return;
+    }
+
+    const key = "groomingpg_client_" + phone;
+    localStorage.removeItem(key);
+    localStorage.removeItem("last_grooming_phone");
+
+    alert("Profile deleted successfully.");
+
+    // Clear fields
+    document.getElementById("ownerName").value = "";
+    document.getElementById("dogInfo").value = "";
+    document.getElementById("lastGroomingDate").value = "";
+    document.getElementById("measNeck").value = "";
+    document.getElementById("measChest").value = "";
+    document.getElementById("measBack").value = "";
+    document.getElementById("measWeight").value = "";
+    document.getElementById("clientNotes").value = "";
+
+    // Switch back to login view
+    document.getElementById("clientProfile").style.display = "none";
+    document.getElementById("clientNotLogged").style.display = "block";
+    document.getElementById("phoneInput").value = "";
   }
   </script>
 
